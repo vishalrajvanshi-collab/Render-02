@@ -1,0 +1,21 @@
+services:
+  # Service 1: Your custom web terminal app mapped to internal port 10000
+  my-gotty:
+    hostname: mygotty
+    ports:
+      - "8989:10000" # Mapped to your new internal port 10000
+    image: lapio-plays:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.vscode
+    tty: true
+    stdin_open: true
+    restart: always
+
+  # Service 2: The official healthlog application is now disabled
+  # healthlog-server:
+  #   image: ghcr.io/mbombeck/healthlog:latest
+  #   container_name: healthlog_app
+  #   restart: always
+  #   ports:
+  #     - "3000:8080"
